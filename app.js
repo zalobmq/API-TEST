@@ -1,18 +1,12 @@
-// Importar express
-const express = require('express');
+const http = require('http');
 
-// Crear una instancia de express
-const app = express();
-
-// Definir la ruta principal
-app.get('/', (req, res) => {
-  res.send('HOLA MUNDO');
+const server = http.createServer((req , res) => {
+    res.setHeader('Content-Type', 'text/plain');
+    res.write('HOLA MUNDO');
+    res.end();
 });
 
-// Definir el puerto de escucha
-const port = process.env.PORT || 3000;
-
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`);
+const port = 3000;
+server.listen (port, () => {
+    console.log('Server running')
 });
